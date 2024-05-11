@@ -1,0 +1,285 @@
+ /* problem: Given a list of non-negative integers nums, arrange them such that they form the largest number and return it.
+
+Since the result may be very large, so you need to return a string instead of an integer. */
+
+class Solution {
+public:
+    string largestNumber(vector<int>& nums) 
+    {
+        std::vector<int> n9;// Make 10 vectors to divide all numbers by first digit 
+        std::vector<int> n8;//This division allows to save time 
+        std::vector<int> n7;//Cause we don't need to sort all numbers
+        std::vector<int> n6;
+        std::vector<int> n5;
+        std::vector<int> n4;
+        std::vector<int> n3;
+        std::vector<int> n2;
+        std::vector<int> n1;
+        std::vector<int> n0;
+        std::string l_number = "";
+        for(int i= 0; i < nums.size(); i++)
+        {
+            std::string temp = to_string(nums[i]);
+            if(temp[0] == '9' )
+            {
+                n9.push_back(nums[i]);
+            }
+            else if(temp[0] == '8' )
+            {
+                n8.push_back(nums[i]);
+            }
+            else if(temp[0] == '7' )
+            {
+                n7.push_back(nums[i]);
+            }
+            else if(temp[0] == '6' )
+            {
+                n6.push_back(nums[i]);
+            }
+            else if(temp[0] == '5' )
+            {
+                n5.push_back(nums[i]);
+            }
+            else if(temp[0] == '4' )
+            {
+                n4.push_back(nums[i]);
+            }
+            else if(temp[0] == '3' )
+            {
+                n3.push_back(nums[i]);
+            }
+            else if(temp[0] == '2' )
+            {
+                n2.push_back(nums[i]);
+            }
+            else if(temp[0] == '1' )
+            {
+                n1.push_back(nums[i]);
+            }
+            else if(temp[0] == '0' )
+            {
+                n0.push_back(nums[i]);
+            }
+ 
+                       
+        }
+        if(n9.size() > 0)//buble sort (of course, it would be better to use merge sort)
+        {
+            for(int i = 0; i < n9.size() - 1; i++ )
+            {
+                for(int j = i + 1; j < n9.size(); j++ )
+                {
+                    std::string temp1 = std::to_string(n9[i]) + std::to_string(n9[j]);//adding numbers as strings
+                    std::string temp2 = std::to_string(n9[j]) + std::to_string(n9[i]);
+                    std::cout << temp1 << " " << temp2;
+                    if(std::stoull(temp2) > std::stoull(temp1) )//comparing them
+                    {
+                        std::swap(n9[i], n9[j]);
+                    }
+                }
+
+            }
+            for(int i = 0; i < n9.size(); i++ )
+            {
+                l_number+=std::to_string( n9[i]);//adding to string sorted numbers as strings
+            }
+        }
+//repeating the operations with every vector
+        if(n8.size() > 0)
+        {
+            for(int i = 0; i < n8.size() - 1; i++ )
+            {
+                for(int j = i + 1; j < n8.size(); j++ )
+                {
+                    std::string temp1 = std::to_string(n8[i]) + std::to_string(n8[j]);
+                    std::string temp2 = std::to_string(n8[j]) + std::to_string(n8[i]);
+                    if(std::stoull(temp2) > std::stoull(temp1) )
+                    {
+                        std::swap(n8[i], n8[j]);
+                    }
+                }
+
+            }
+            for(int i = 0; i < n8.size(); i++ )
+            {
+                l_number+=std::to_string( n8[i]);
+            }
+        }
+        if(n7.size() > 0)
+        {
+            for(int i = 0; i < n7.size() - 1; i++ )
+            {
+                for(int j = i + 1; j < n7.size(); j++ )
+                {
+                    std::string temp1 = std::to_string(n7[i]) + std::to_string(n7[j]);
+                    std::string temp2 = std::to_string(n7[j]) + std::to_string(n7[i]);
+                    if(std::stoull(temp2) > std::stoull(temp1) )
+                    {
+                        std::swap(n7[i], n7[j]);
+                    }
+                }
+
+            }
+            for(int i = 0; i < n7.size(); i++ )
+            {
+                l_number+=std::to_string( n7[i]);
+            }
+
+        }
+         
+        if(n6.size() > 0)
+        {
+            for(int i = 0; i < n6.size() - 1; i++ )
+            {
+                for(int j = i + 1; j < n6.size(); j++ )
+                {
+                    std::string temp1 = std::to_string(n6[i]) + std::to_string(n6[j]);
+                    std::string temp2 = std::to_string(n6[j]) + std::to_string(n6[i]);
+                    if(std::stoull(temp2) > std::stoull(temp1) )
+                    {
+                        std::swap(n6[i], n6[j]);
+                    }
+                }
+
+            }
+            for(int i = 0; i < n6.size(); i++ )
+            {
+                l_number+=std::to_string( n6[i]);
+            }
+
+        }
+        if(n5.size() > 0)
+        {
+            for(int i = 0; i < n5.size() - 1; i++ )
+            {
+                for(int j = i + 1; j < n5.size(); j++ )
+                {
+                    std::string temp1 = std::to_string(n5[i]) + std::to_string(n5[j]);
+                    std::string temp2 = std::to_string(n5[j]) + std::to_string(n5[i]);
+                    if(std::stoull(temp2) > std::stoull(temp1) )
+                    {
+                        std::swap(n5[i], n5[j]);
+                    }
+                }
+
+            }
+            for(int i = 0; i < n5.size(); i++ )
+            {
+                l_number+=std::to_string( n5[i]);
+            }
+
+        }
+        if(n4.size() > 0)
+        {
+            for(int i = 0; i < n4.size() - 1; i++ )
+            {
+                for(int j = i + 1; j < n4.size(); j++ )
+                {
+                    std::string temp1 = std::to_string(n4[i]) + std::to_string(n4[j]);
+                    std::string temp2 = std::to_string(n4[j]) + std::to_string(n4[i]);
+                    if(std::stoull(temp2) > std::stoull(temp1) )
+                    {
+                        std::swap(n4[i], n4[j]);
+                    }
+                }
+
+            }
+            for(int i = 0; i < n4.size(); i++ )
+            {
+                l_number+=std::to_string( n4[i]);
+            }
+
+        }
+        if(n3.size() > 0)
+        {
+            for(int i = 0; i < n3.size() - 1; i++ )
+            {
+                for(int j = i + 1; j < n3.size(); j++ )
+                {
+                    std::string temp1 = std::to_string(n3[i]) + std::to_string(n3[j]);
+                    std::string temp2 = std::to_string(n3[j]) + std::to_string(n3[i]);
+                    if(std::stoull(temp2) > std::stoull(temp1) )
+                    {
+                        std::swap(n3[i], n3[j]);
+                    }
+                }
+
+            }
+            for(int i = 0; i < n3.size(); i++ )
+            {
+                l_number+=std::to_string( n3[i]);
+            }
+
+        }
+        
+        if(n2.size() > 0)
+        {
+             for(int i = 0; i < n2.size() - 1; i++ )
+            {
+                for(int j = i + 1; j < n2.size(); j++ )
+                {
+                    std::string temp1 = std::to_string(n2[i]) + std::to_string(n2[j]);
+                    std::string temp2 = std::to_string(n2[j]) + std::to_string(n2[i]);
+                    if(std::stoull(temp2) > std::stoull(temp1) )
+                    {
+                        std::swap(n2[i], n2[j]);
+                    }
+                }
+
+            }
+            for(int i = 0; i < n2.size(); i++ )
+            {
+                l_number+=std::to_string( n2[i]);
+            }
+
+        }
+        if(n1.size() > 0)
+        {
+            for(int i = 0; i < n1.size() - 1; i++ )
+            {
+                for(int j = i + 1; j < n1.size(); j++ )
+                {
+                    std::string temp1 = std::to_string(n1[i]) + std::to_string(n1[j]);
+                    std::string temp2 = std::to_string(n1[j]) + std::to_string(n1[i]);
+                    if(std::stoull(temp2) > std::stoull(temp1) )
+                    {
+                        std::swap(n1[i], n1[j]);
+                    }
+                }
+
+            }
+            for(int i = 0; i < n1.size(); i++ )
+            {
+                l_number+=std::to_string( n1[i]);
+            }
+
+        }
+       
+        if(n0.size() > 0)
+        {
+            for(int i = 0; i < n0.size() - 1; i++ )
+            {
+                for(int j = i + 1; j < n0.size(); j++ )
+                {
+                    std::string temp1 = std::to_string(n0[i]) + std::to_string(n0[j]);
+                    std::string temp2 = std::to_string(n0[j]) + std::to_string(n0[i]);
+                    if(std::stoull(temp2) > std::stoull(temp1) )
+                    {
+                        std::swap(n0[i], n0[j]);
+                    }
+                }
+            }
+            for(int i = 0; i < n0.size(); i++ )
+            {
+                l_number+=std::to_string( n0[i]);
+            }
+
+        }
+        if(l_number[0] == '0')// for case with vector of zeros
+        {
+            l_number = '0';
+        }
+
+        return l_number;
+    }
+};
